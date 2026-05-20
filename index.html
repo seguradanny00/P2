@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reproductor de Video en Secuencia</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+    #videoPlayer {
+      width: 100%;
+      max-width: 640px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .info {
+      margin-top: 20px;
+      padding: 10px;
+      background: #f0f0f0;
+      border-radius: 5px;
+    }
+    button {
+      margin: 5px;
+      padding: 8px 16px;
+      font-size: 14px;
+      cursor: pointer;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Reproductor de Video en Secuencia</h2>
+
+  <video id="videoPlayer" width="640" height="360" controls autoplay>
+    <source src="video1.mp4" type="video/mp4">
+    Tu navegador no soporta la etiqueta de video.
+  </video>
+
+  <div class="info">
+    <p>Video <span id="videoCounter">1</span> de <span id="totalVideos"></span></p>
+    <button id="prevBtn" onclick="prevVideo()">◀ Anterior</button>
+    <button id="nextBtn" onclick="nextVideo()">Siguiente ▶</button>
+    <button id="loopBtn" onclick="toggleLoop()">🔄 Repetir lista</button>
+  </div>
+
+  <script>
+    // Lista de reproducción
+    const playlist = [
+      "video1.mp4",
+      "video2.mp4",
+      "video3.mp4",
+      "video4.mp4",
+      "video5.mp4",
+      "video6.mp4",
+      "video7.mp4",
+      "video8.mp4",
+      "video9.mp4",
+    ];
+
+    let currentVideo = 0;
+    let loopPlaylist = false;
+    const videoPlayer = document.getElementById("videoPlayer");
+    const videoCounter = document.getElementById("videoCounter");
+    const totalVideosSpan = document.getElementById("totalVideos");
+    
+    // Mostrar total de videos
+    totalVideosSpan.textContent = playlist.length;
+    updateCounter();
+
+    // Función para actualizar el contador
+    function updateCounter() {
+      videoCounter.textContent = currentVideo + 1;
+    }
+
+    // Función para cargar y reproducir video actual
+    function loadVideo(index) {
+      if (index >= 0 && index < playlist.length) {
+        videoPlayer.src = playlist[index];
+        videoPlayer.load();
+        videoPlayer.play().catch(e => console.log("Error al reproducir:", e));
+        updateCounter();
+      }
+    }
+
+    // Siguiente video
+    function nextVideo() {
+      if (currentVideo + 1 < playlist.length) {
+        currentVideo++;
+        loadVideo(currentVideo);
+      } else if (loopPlaylist) {
+        currentVideo = 0;
+        loadVideo(currentVideo);
+      } else {
+        console.log("Fin de la lista de reproducción.");
+      }
+    }
+
+    // Video anterior
+    function prevVideo() {
+      if (currentVideo - 1 >= 0) {
+        currentVideo--;
+        loadVideo(currentVideo);
+      } else if (loopPlaylist) {
+        currentVideo = playlist.length - 1;
+        loadVideo(currentVideo);
+      }
+    }
+
+    // Alternar repetición de lista
+    function toggleLoop() {
+      loopPlaylist = !loopPlaylist;
+      const loopBtn = document.getElementById("loopBtn");
+      loopBtn.style.background = loopPlaylist ? "#28a745" : "#007bff";
+      loopBtn.textContent = loopPlaylist ? "✓ Repitiendo lista" : "🔄 Repetir lista";
+    }
+
+    // Evento cuando termina un video
+    videoPlayer.addEventListener("ended", function () {
+      if (currentVideo + 1 < playlist.length) {
+        currentVideo++;
+        loadVideo(currentVideo);
+      } else if (loopPlaylist) {
+        currentVideo = 0;
+        loadVideo(currentVideo);
+        console.log("Repitiendo lista desde el inicio.");
+      } else {
+        console.log("Fin de la lista de reproducción.");
+      }
+    });
+
+    // Cargar primer video
+    loadVideo(0);
+  </script>
+
+</body>
+</html>
