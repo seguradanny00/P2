@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velo de Aromas | Luxury Futuristic Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    
+    :root {
+      --bg-dark: #05120c;
+      --bg-panel: rgba(10, 30, 20, 0.5);
+      --bg-panel-heavy: rgba(10, 30, 20, 0.85);
+      --emerald-deep: #0a2e1d;
+      --emerald-bright: #1b5e3f;
+      --gold-light: #e8d5a7;
+      --gold-dark: #b8955a;
+      --text-main: #f4f8f5;
+      --text-muted: #9db5a8;
+      --glass-border: rgba(232, 213, 167, 0.2);
+      --glow: 0 0 25px rgba(27, 94, 63, 0.4);
+      --glow-gold: 0 0 15px rgba(232, 213, 167, 0.2);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(27, 94, 63, 0.25) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(184, 149, 90, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(5, 18, 12, 0) 0%, #05120c 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .bg-grid {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: 
+        linear-gradient(rgba(232, 213, 167, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(232, 213, 167, 0.04) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    h1, h2, h3, .brand-font { font-family: 'Cinzel', serif; }
+
+    /* ----- BANNER DE REDES SOCIALES (MARQUEE) ----- */
+    .social-banner {
+      background: linear-gradient(90deg, var(--emerald-deep), var(--gold-dark), var(--emerald-deep));
+      background-size: 200% auto;
+      color: var(--bg-dark);
+      padding: 10px 0;
+      overflow: hidden;
+      position: relative;
+      border-bottom: 2px solid var(--gold-light);
+      box-shadow: 0 0 20px rgba(232, 213, 167, 0.3);
+      z-index: 1001;
+      margin-top: 75px;
+    }
+
+    .marquee-content {
+      display: flex;
+      white-space: nowrap;
+      animation: marquee 25s linear infinite;
+      font-weight: 800;
+      font-size: 0.9rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .marquee-content span {
+      margin: 0 30px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .marquee-content i {
+      font-size: 1.1rem;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ----- NAVBAR ----- */
+    .navbar {
+      position: fixed;
+      top: 0; width: 100%;
+      padding: 15px 5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(5, 18, 12, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 45px;
+      width: 45px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: var(--glow);
+      border: 1px solid var(--gold-dark);
+    }
+
+    .logo-text {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      letter-spacing: 2px;
+      text-shadow: 0 0 15px rgba(232, 213, 167, 0.4);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px; left: 0; width: 0%; height: 2px;
+      background: var(--gold-light);
+      transition: width 0.3s ease;
+      box-shadow: 0 0 10px var(--gold-light);
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ----- HEADER PRINCIPAL ----- */
+    header {
+      padding: 120px 5vw 40px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-logo {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 3px solid var(--gold-dark);
+      filter: drop-shadow(0 0 50px rgba(27, 94, 63, 0.9));
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .eslogan {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      color: var(--gold-dark);
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      text-shadow: 0 0 20px rgba(232, 213, 167, 0.3);
+    }
+
+    .eyebrow {
+      color: var(--text-muted);
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    header h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      margin-bottom: 20px;
+      background: linear-gradient(to right, var(--text-main), var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 1px;
+    }
+
+    .tools {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 40px;
+      background: var(--bg-panel);
+      backdrop-filter: blur(15px);
+      padding: 20px;
+      border-radius: 20px;
+      border: 1px solid var(--glass-border);
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: var(--glow);
+    }
+
+    .tools input, .tools select {
+      background: rgba(0,0,0,0.4);
+      color: var(--text-main);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      padding: 12px 18px;
+      min-width: 180px;
+      outline: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.3s;
+    }
+
+    .tools input:focus, .tools select:focus {
+      border-color: var(--gold-dark);
+      box-shadow: 0 0 15px rgba(184, 149, 90, 0.3);
+    }
+
+    .stats {
+      color: var(--gold-light);
+      font-size: 14px;
+      margin-top: 20px;
+      text-align: center;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    .grid {
+      padding: 30px 5vw 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--bg-panel);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6), var(--glow);
+      border-color: rgba(232, 213, 167, 0.5);
+    }
+
+    .photo {
+      height: 220px;
+      background: radial-gradient(circle at center, rgba(27, 94, 63, 0.3) 0%, transparent 70%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(232, 213, 167, 0.05);
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 20px;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover .photo img {
+      transform: scale(1.1);
+    }
+
+    .empty {
+      background: radial-gradient(circle at center, rgba(27, 94, 63, 0.1) 0%, transparent 70%);
+      color: var(--text-muted);
+      text-align: center;
+      padding: 20px;
+    }
+
+    .empty .symbol {
+      font-size: 50px;
+      color: var(--gold-dark);
+      display: block;
+      margin-bottom: 10px;
+      opacity: 0.6;
+    }
+
+    .photo-label {
+      position: absolute;
+      left: 10px; bottom: 10px;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold-light));
+      color: var(--bg-dark);
+      border-radius: 20px;
+      padding: 5px 12px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: 0 0 15px rgba(232, 213, 167, 0.6);
+    }
+
+    .info {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .rank {
+      font-size: 10px;
+      color: var(--gold-dark);
+      letter-spacing: 2px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .name {
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      line-height: 1.3;
+      margin: 8px 0;
+      color: var(--text-main);
+    }
+
+    .brand {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .price {
+      font-weight: 700;
+      color: var(--gold-light);
+      font-size: 1.3rem;
+      margin-top: 12px;
+      text-shadow: 0 0 10px rgba(232, 213, 167, 0.3);
+    }
+
+    .notes {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    .details {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-top: 12px;
+      border-top: 1px solid var(--glass-border);
+      padding-top: 10px;
+    }
+
+    .details b { color: var(--gold-light); }
+
+    /* Nuevos campos para admin */
+    .admin-only-data {
+      display: block;
+      background: rgba(0,0,0,0.3);
+      border-radius: 10px;
+      padding: 12px;
+      margin-top: 12px;
+      border: 1px solid rgba(232, 213, 167, 0.15);
+    }
+    .admin-only-data .data-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .admin-only-data .data-row:last-child { border-bottom: none; }
+    .admin-only-data .data-row span:first-child { color: var(--text-muted); }
+    .admin-only-data .data-row span:last-child { color: var(--text-main); font-weight: 600; }
+    .admin-only-data .profit { color: #4ade80; font-weight: 700; }
+    .admin-only-data .low-stock { color: #f87171; font-weight: 700; }
+    .admin-only-data .high-stock { color: #4ade80; font-weight: 700; }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    .actions a, .actions button {
+      font-size: 11px;
+      text-decoration: none;
+      color: var(--gold-light);
+      background: rgba(232, 213, 167, 0.08);
+      border: 1px solid rgba(232, 213, 167, 0.2);
+      border-radius: 8px;
+      padding: 8px 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-family: 'Inter', sans-serif;
+      flex: 1;
+      font-weight: 600;
+    }
+
+    .actions a:hover, .actions button:hover {
+      background: rgba(232, 213, 167, 0.2);
+      border-color: var(--gold-light);
+      box-shadow: 0 0 15px rgba(232, 213, 167, 0.3);
+    }
+
+    /* Estilo especial para botón de WhatsApp en tarjeta */
+    .btn-wa-card {
+      background: linear-gradient(135deg, #128c7e, #075e54) !important;
+      color: white !important;
+      border: 1px solid #25d366 !important;
+      font-weight: 700 !important;
+    }
+    .btn-wa-card:hover {
+      box-shadow: 0 0 20px rgba(37, 211, 102, 0.5) !important;
+    }
+
+    .urlbox {
+      display: none;
+      margin-top: 10px;
+      width: 100%;
+      background: rgba(0,0,0,0.4);
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+    }
+
+    .urlbox input {
+      width: 100%;
+      background: #0d0f17;
+      color: var(--text-main);
+      border: 1px solid rgba(232, 213, 167, 0.2);
+      border-radius: 6px;
+      padding: 9px;
+      font-size: 11px;
+      margin-bottom: 6px;
+      outline: none;
+    }
+
+    .urlbox input:focus { border-color: var(--gold-dark); }
+
+    .urlbox button {
+      margin-top: 4px;
+      background: var(--emerald-bright);
+      color: var(--gold-light);
+      border: 1px solid var(--emerald-bright);
+      padding: 8px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 11px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .urlbox button:hover {
+      background: var(--emerald-deep);
+      box-shadow: 0 0 15px rgba(27, 94, 63, 0.7);
+    }
+
+    .urlbox .btn-remove {
+      background: #3a1a1a;
+      border-color: #7a3a3a;
+      color: #f0a0a0;
+    }
+    .urlbox .btn-remove:hover {
+      background: #5a2a2a;
+      box-shadow: 0 0 15px rgba(122, 58, 58, 0.7);
+    }
+
+    footer {
+      border-top: 1px solid var(--glass-border);
+      padding: 60px 5vw;
+      text-align: center;
+      background: rgba(5, 18, 12, 0.8);
+      backdrop-filter: blur(20px);
+    }
+
+    footer p {
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto 20px;
+    }
+
+    .whatsapp-float {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #128c7e, #075e54);
+      color: white;
+      text-decoration: none;
+      padding: 15px 30px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 5px 20px rgba(18, 140, 126, 0.4);
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 35px rgba(18, 140, 126, 0.6);
+    }
+
+    .footer-bottom {
+      margin-top: 40px;
+      color: rgba(157, 181, 168, 0.4);
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    /* ----- ADMIN PANEL ----- */
+    .admin-toggle {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 2000;
+      background: linear-gradient(135deg, var(--emerald-bright), var(--emerald-deep));
+      color: var(--gold-light);
+      border: 1px solid var(--gold-dark);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 0 25px rgba(27, 94, 63, 0.8);
+      transition: transform 0.2s;
+    }
+    .admin-toggle:hover { transform: scale(1.1); }
+
+    .admin-panel {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      max-width: 550px;
+      height: 100vh;
+      background: var(--bg-panel-heavy);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border-left: 1px solid var(--glass-border);
+      z-index: 2001;
+      padding: 30px;
+      overflow-y: auto;
+      transition: right 0.4s ease;
+      box-shadow: -10px 0 50px rgba(0,0,0,0.8);
+    }
+    .admin-panel.open { right: 0; }
+
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 15px;
+    }
+    .admin-header h2 { color: var(--gold-light); font-size: 1.5rem; }
+    .admin-close { background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
+    .admin-close:hover { color: var(--gold-light); }
+
+    .admin-section { margin-bottom: 30px; }
+    .admin-section h3 { color: var(--gold-dark); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; border-bottom: 1px solid rgba(232, 213, 167, 0.1); padding-bottom: 8px; }
+
+    .admin-form-group { margin-bottom: 15px; }
+    .admin-form-group label { display: block; color: var(--text-muted); font-size: 0.8rem; margin-bottom: 5px; }
+    .admin-form-group input, .admin-form-group select, .admin-form-group textarea {
+      width: 100%;
+      background: rgba(0,0,0,0.5);
+      color: var(--text-main);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 0.9rem;
+      outline: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .admin-form-group input:focus, .admin-form-group select:focus, .admin-form-group textarea:focus {
+      border-color: var(--gold-dark);
+      box-shadow: 0 0 10px rgba(184, 149, 90, 0.2);
+    }
+
+    .admin-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      background: var(--emerald-bright);
+      color: var(--gold-light);
+      border: 1px solid var(--gold-dark);
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .admin-btn:hover {
+      background: var(--emerald-deep);
+      box-shadow: 0 0 20px rgba(27, 94, 63, 0.7);
+    }
+    .admin-btn-danger {
+      background: #3a1a1a;
+      border-color: #7a3a3a;
+      color: #f0a0a0;
+    }
+    .admin-btn-danger:hover {
+      background: #5a2a2a;
+      box-shadow: 0 0 20px rgba(122, 58, 58, 0.7);
+    }
+
+    .admin-product-list {
+      max-height: 400px;
+      overflow-y: auto;
+      border: 1px solid rgba(232, 213, 167, 0.1);
+      border-radius: 8px;
+      padding: 10px;
+      margin-top: 10px;
+      background: rgba(0,0,0,0.2);
+    }
+    .admin-product-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.85rem;
+      color: var(--text-main);
+    }
+    .admin-product-item:last-child { border-bottom: none; }
+    .admin-product-item span { flex: 1; }
+    .admin-product-item button {
+      background: none;
+      border: none;
+      color: #f0a0a0;
+      cursor: pointer;
+      font-size: 0.9rem;
+      padding: 5px;
+      transition: color 0.2s;
+    }
+    .admin-product-item button:hover { color: #ff6b6b; }
+    .admin-product-item .edit-btn { color: var(--gold-light); margin-right: 10px; }
+    .admin-product-item .edit-btn:hover { color: var(--gold-dark); }
+
+    @media (max-width: 768px) {
+      .navbar { padding: 12px 3vw; }
+      .nav-links { display: none; }
+      header { padding-top: 100px; }
+      .hero-logo { width: 140px; height: 140px; }
+      .eslogan { font-size: 0.8rem; letter-spacing: 4px; }
+      .tools { flex-direction: column; padding: 15px; }
+      .tools input, .tools select { width: 100%; min-width: unset; }
+      .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 15px 3vw 50px; }
+      .photo { height: 160px; }
+      .info { padding: 12px; }
+      .name { font-size: 14px; }
+      .price { font-size: 1.1rem; }
+      .notes, .details { font-size: 10px; }
+      .actions { flex-direction: column; }
+      .actions a, .actions button { width: 100%; }
+      .admin-panel { max-width: 100%; }
+      .admin-toggle { width: 50px; height: 50px; font-size: 1.2rem; bottom: 20px; right: 20px; }
+      .social-banner { margin-top: 65px; }
+    }
+  
+    /* Ocultar datos de admin en el HTML final */
+    .admin-only-data { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+
+  <!-- BANNER DE REDES SOCIALES -->
+  <div class="social-banner">
+    <div class="marquee-content">
+      <span><i class="fab fa-instagram"></i> SÍGUENOS EN NUESTRAS REDES SOCIALES</span>
+      <span><i class="fab fa-facebook"></i> SÍGUENOS EN NUESTRAS REDES SOCIALES</span>
+      <span><i class="fab fa-tiktok"></i> SÍGUENOS EN NUESTRAS REDES SOCIALES</span>
+      <span><i class="fab fa-instagram"></i> SÍGUENOS EN NUESTRAS REDES SOCIALES</span>
+      <span><i class="fab fa-facebook"></i> SÍGUENOS EN NUESTRAS REDES SOCIALES</span>
+      <span><i class="fab fa-tiktok"></i> SÍGUENOS EN NUESTRAS REDES SOCIALES</span>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <a href="#" class="logo-container">
+      <img src="https://i.postimg.cc/TPSK8Swb/logo-perfumeria.jpg" alt="Velo de Aromas" class="logo-img">
+      <span class="logo-text brand-font">VELO DE AROMAS</span>
+    </a>
+    <div class="nav-links">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </nav>
+
+  <header id="catalogo">
+    <img src="https://i.postimg.cc/TPSK8Swb/logo-perfumeria.jpg" alt="Velo de Aromas Logo" class="hero-logo">
+    <div class="eslogan">FRAGANCIAS QUE CAUTIVAN</div>
+    <div class="eyebrow">Catálogo de colección · Chile</div>
+    <h1>Catálogo Exclusivo</h1>
+    
+    <div class="tools">
+      <input type="text" id="q" placeholder="Buscar perfume, marca o inspiración...">
+      <select id="brand"><option value="">Todas las marcas</option></select>
+      <select id="gender"><option value="">Todos los géneros</option></select>
+      <select id="photo">
+        <option value="">Todas las fichas</option>
+        <option value="yes">Con foto añadida</option>
+        <option value="no">Sin foto añadida</option>
+      </select>
+    </div>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <main class="grid" id="grid"></main>
+
+  <footer id="contacto">
+    <a href="https://wa.me/+56979425864?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20de%20Velo%20de%20Aromas.%20Me%20gustar%C3%ADa%20asesor%C3%ADa%20para%20elegir%20un%20perfume." target="_blank" class="whatsapp-float" id="whatsappFooter">
+      <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+    </a>
+    <div class="footer-bottom">
+      © 2026 Velo de Aromas · Precios en CLP referenciales
+    </div>
+  </footer>
+
+  <script>
+    const products = [{"rank":"1","name":"Club de Nuit Intense Man EDT","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"22.990","inspiration":"Creed Aventus","notes":"Cítrica Amaderada Ahumada","priceProvider":29.99,"priceStore":49.99,"priceSale":60,"stock":4},{"rank":"2","name":"Asad EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"29.990","inspiration":"Dior Sauvage Elixir","notes":"Ámbar Especiada","priceSale":0},{"rank":"3","name":"Yara EDP (Rosa)","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"22990","inspiration":"Perfil Dulce Gourmand / Orquídea Vainilla","notes":"Ámbar Vainilla Dulce","priceSale":0},{"rank":"4","name":"Khamrah EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"25990","inspiration":"Kilian Angels' Share","notes":"Aromática Gourmand Especiada","priceSale":0},{"rank":"5","name":"9 PM EDP","brand":"Afnan","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"28990","inspiration":"Jean Paul Gaultier Ultra Male","notes":"Ámbar Vainilla Frutal","priceSale":0},{"rank":"6","name":"Hawas for Him EDP","brand":"Rasasi","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"34990","inspiration":"Paco Rabanne Invictus Aqua","notes":"Acuática Aromática Frutal","priceSale":0},{"rank":"7","name":"Eclaire EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"28990","inspiration":"Giardini Di Toscana Bianco Latte","notes":"Gourmand Láctico Caramelo","priceSale":0},{"rank":"8","name":"Liquid Brun EDP","brand":"French Avenue (Fragrance World)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"29900","inspiration":"Parfums de Marly Althaïr","notes":"Ámbar Vainilla Especiada","priceSale":0},{"rank":"9","name":"Club de Nuit Untold EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"38990","inspiration":"Maison Francis Kurkdjian Baccarat Rouge 540","notes":"Ámbar Floral","priceSale":0},{"rank":"10","name":"Fakhar Black EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"19990","inspiration":"Yves Saint Laurent Y EDP","notes":"Ámbar Fougère Fresca","priceSale":0},{"rank":"11","name":"Amber Oud Gold Edition EDP","brand":"Al Haramain","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"49990","inspiration":"Xerjoff Erba Pura","notes":"Ámbar Vainilla Frutal","priceSale":0},{"rank":"12","name":"Qaed Al Fursan EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"18990","inspiration":"Creed Aventus (Faceta Piña Jugosa)","notes":"Aromática Frutal","priceSale":0},{"rank":"13","name":"Khamrah Qahwa EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"26990","inspiration":"Kilian Angels' Share (con Toque Café)","notes":"Gourmand Especiada Café","priceSale":0},{"rank":"14","name":"Club de Nuit Sillage EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"34990","inspiration":"Creed Silver Mountain Water","notes":"Floral Frutal Almizclada","priceSale":0},{"rank":"15","name":"Tobacco Touch EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"21990","inspiration":"Tom Ford Tobacco Vanille","notes":"Ámbar Especiada Tabaco","priceSale":0},{"rank":"16","name":"Badee Al Oud Honor & Glory","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"24990","inspiration":"Bond No 9 TriBeCa","notes":"Gourmand Piña Crème Brûlée","priceSale":0},{"rank":"17","name":"Turathi Blue EDP","brand":"Afnan","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"29990","inspiration":"Bvlgari Tygar","notes":"Cítrica Cítricos Pomelo","priceSale":0},{"rank":"18","name":"Club de Nuit Milestone EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"34990","inspiration":"Creed Millésime Impérial","notes":"Amaderada Floral Almizclada","priceSale":0},{"rank":"19","name":"Badee Al Oud Oud for Glory","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"25990","inspiration":"Initio Oud for Greatness","notes":"Ámbar Amaderada Especiada","priceSale":0},{"rank":"20","name":"Hawas Ice EDP","brand":"Rasasi","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"37990","inspiration":"Invictus Aqua + Chanel Allure Sport Extreme","notes":"Acuática Cítrica Mentolada","priceSale":0},{"rank":"21","name":"Yara Tous EDP (Amarillo)","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"19990","inspiration":"Paco Rabanne Fame / Mango Tropical","notes":"Floral Frutal Mango","priceSale":0},{"rank":"22","name":"Asad Zanzibar EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"24990","inspiration":"Jean Paul Gaultier Le Beau Le Parfum","notes":"Acuática Coco Vainilla","priceSale":0},{"rank":"23","name":"Vulcan Feu EDP","brand":"French Avenue (Fragrance World)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"35112","inspiration":"Stephane Humbert Lucas God of Fire","notes":"Frutal Mango Especiado","priceSale":0},{"rank":"24","name":"Jean Lowe Immortal EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"22990","inspiration":"Louis Vuitton L'Immensité","notes":"Ámbar Especiada Fresca","priceSale":0},{"rank":"25","name":"Odyssey Mandarin Sky EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"27990","inspiration":"Jean Paul Gaultier Scandal Pour Homme","notes":"Cítrica Gourmand Caramelo","priceSale":0},{"rank":"26","name":"Amber & Leather EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"21990","inspiration":"Tom Ford Ombré Leather","notes":"Cuero Ámbar Especiada","priceSale":0},{"rank":"27","name":"Yara Moi EDP (Blanco)","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"19990","inspiration":"Perfume Dulce Durazno Caramelo","notes":"Ámbar Gourmand Dulce","priceSale":0},{"rank":"28","name":"Maahir Legacy EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"23990","inspiration":"Parfums de Marly Sedley","notes":"Cítrica Menta Fresca","priceSale":0},{"rank":"29","name":"Nebras EDP","brand":"Lattafa (Pride)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"29990","inspiration":"Billie Eilish Eilish No. 1","notes":"Gourmand Cacao Vainilla","priceSale":0},{"rank":"30","name":"Club de Nuit Urban Elixir EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"31990","inspiration":"Dior Sauvage + Creed Aventus","notes":"Cítrica Especiada Ambroxan","priceSale":0},{"rank":"31","name":"Supremacy Not Only Intense","brand":"Afnan","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"36990","inspiration":"Nishane Hacivat + Creed Aventus","notes":"Frutal Musgo Ahumada","priceSale":0},{"rank":"32","name":"Kismet For Men EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"21990","inspiration":"Yves Saint Laurent Tuxedo","notes":"Ámbar Especiada Pachulí","priceSale":0},{"rank":"33","name":"Ameer Al Oudh Intense Oud","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"22990","inspiration":"Maison Margiela Replica By the Fireplace","notes":"Ámbar Amaderada Azúcar","priceSale":0},{"rank":"34","name":"Lovely Chérie EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"21990","inspiration":"Tom Ford Lost Cherry","notes":"Floral Frutal Cereza","priceSale":0},{"rank":"35","name":"Hercules EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"21990","inspiration":"Parfums de Marly Herod","notes":"Amaderada Tabaco Vainilla","priceSale":0},{"rank":"36","name":"Bright Peach EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"21990","inspiration":"Tom Ford Bitter Peach","notes":"Frutal Melocotón Ron","priceSale":0},{"rank":"37","name":"Woody Oud EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"21990","inspiration":"Tom Ford Oud Wood","notes":"Amaderada Oud Especiada","priceSale":0},{"rank":"38","name":"Porto Neroli EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"21990","inspiration":"Tom Ford Neroli Portofino","notes":"Cítrica Floral Blanca","priceSale":0},{"rank":"39","name":"Liam Grey EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"25990","inspiration":"BDK Parfums Gris Charnel","notes":"Ámbar Especiada Higo Té","priceSale":0},{"rank":"40","name":"Yara Candy EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"21990","inspiration":"Frutal Caramelo Dulce de Dulces","notes":"Frutal Gourmand","priceSale":0},{"rank":"41","name":"Hawas Black EDP","brand":"Rasasi","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"39990","inspiration":"Creed Aventus + Nishane Hacivat","notes":"Chipre Frutal Amaderada","priceSale":0},{"rank":"42","name":"Emir Voux Elegante EDP","brand":"Paris Corner","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"28990","inspiration":"Xerjoff Naxos","notes":"Aromática Especiada Miel Tabaco","priceSale":0},{"rank":"43","name":"Emir Fire Your Desire EDP","brand":"Paris Corner","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"27990","inspiration":"Kilian Angels' Share","notes":"Ámbar Gourmand Licorada","priceSale":0},{"rank":"44","name":"Amber Oud Tobacco Edition","brand":"Al Haramain","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"49990","inspiration":"Tom Ford Tobacco Vanille","notes":"Ámbar Especiada Tabaco","priceSale":0},{"rank":"45","name":"L'Aventure EDP","brand":"Al Haramain","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"32990","inspiration":"Creed Aventus","notes":"Cítrica Amaderada Musgo","priceSale":0},{"rank":"46","name":"Shuhrah Pour Homme EDP","brand":"Rasasi","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"26990","inspiration":"Aroma Propio Tabaco y Hoja de Tomate","notes":"Amaderada Cuero Tabaco","priceSale":0},{"rank":"47","name":"Maahir Black Edition EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"24990","inspiration":"Orto Parisi Terroni","notes":"Ámbar Especiada Ahumada","priceSale":0},{"rank":"48","name":"Suqraat EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"19990","inspiration":"Giorgio Armani Acqua Di Giò Profumo","notes":"Acuática Incienso Salvia","priceSale":0},{"rank":"49","name":"Mayar EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"21990","inspiration":"Mucci / Angel Nova Mugler","notes":"Floral Frutal Frambuesa Lichi","priceSale":0},{"rank":"50","name":"Hayaati EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"15990","inspiration":"Paco Rabanne Invictus","notes":"Amaderada Aromatic Frutal","priceSale":0},{"rank":"51","name":"Club de Nuit Woman EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"29990","inspiration":"Chanel Coco Mademoiselle","notes":"Floral Frutal Cítrica","priceSale":0},{"rank":"52","name":"Turathi Brown EDP","brand":"Afnan","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"29990","inspiration":"Yves Saint Laurent Tuxedo","notes":"Ámbar Especiada Pachulí","priceSale":0},{"rank":"53","name":"Ministry of Oud Oud Satin EDP","brand":"Paris Corner","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"26990","inspiration":"Maison Francis Kurkdjian Oud Satin Mood","notes":"Ámbar Floral Rosa Oud","priceSale":0},{"rank":"54","name":"Ministry of Oud Greatest EDP","brand":"Paris Corner","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"26990","inspiration":"Initio Oud for Greatness","notes":"Amaderada Especiada Azafrán","priceSale":0},{"rank":"55","name":"Badee Al Oud Sublime EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"24990","inspiration":"Eden Juicy Apple Kayali","notes":"Frutal Manzana Manzanilla","priceSale":0},{"rank":"56","name":"Al Qiam Gold EDP","brand":"Lattafa (Pride)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"27990","inspiration":"Louis Vuitton Ombre Nomade","notes":"Ámbar Amaderada Oud Rosa","priceSale":0},{"rank":"57","name":"North Stag II Deux EDP","brand":"Paris Corner","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"32990","inspiration":"Parfums de Marly Layton","notes":"Ámbar Floral Manzana Vainilla","priceSale":0},{"rank":"58","name":"North Stag IV Quatre EDP","brand":"Paris Corner","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"32990","inspiration":"Louis Vuitton Afternoon Swim","notes":"Cítrica Acuática Pomelo","priceSale":0},{"rank":"59","name":"Rare Carbon EDP","brand":"Afnan","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"29990","inspiration":"Tom Ford Ombré Leather","notes":"Cuero Ámbar Violeta","priceSale":0},{"rank":"60","name":"Kismet Magic EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"21990","inspiration":"Kilian Angels' Share","notes":"Ámbar Gourmand Canela","priceSale":0},{"rank":"61","name":"Fabulo Intense EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"21990","inspiration":"Tom Ford Fucking Fabulous","notes":"Cuero Almendra Amarga","priceSale":0},{"rank":"62","name":"Perseus EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"21990","inspiration":"Parfums de Marly Pegasus","notes":"Ámbar Fougère Almendra","priceSale":0},{"rank":"63","name":"Jean Lowe Noir EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"24990","inspiration":"Louis Vuitton Ombre Nomade","notes":"Ámbar Amaderada Oud Incienso","priceSale":0},{"rank":"64","name":"Jean Lowe Ombre EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"24990","inspiration":"Louis Vuitton Ombre Nomade","notes":"Ámbar Amaderada Oud Rosa","priceSale":0},{"rank":"65","name":"Jean Lowe Fraiche EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"22990","inspiration":"Louis Vuitton L'Immensité","notes":"Cítrica Especiada Jengibre","priceSale":0},{"rank":"66","name":"La Yuqawam Pour Homme EDP","brand":"Rasasi","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"49990","inspiration":"Tom Ford Tuscan Leather","notes":"Cuero Frambuesa Azafrán","priceSale":0},{"rank":"67","name":"Sultan Al Lail EDP","brand":"Al Wataniah","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"21990","inspiration":"Dolce & Gabbana K EDP","notes":"Aromática Cítrica Amaderada","priceSale":0},{"rank":"68","name":"Kayaan Classic EDP","brand":"Al Wataniah","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"24990","inspiration":"Dior Homme Intense","notes":"Amaderada Iris Vainilla","priceSale":0},{"rank":"69","name":"Qaed Al Fursan Unlimited","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"18990","inspiration":"Perfume Dulce Coco Vainilla Tropical","notes":"Floral Frutal Coco","priceSale":0},{"rank":"70","name":"Fakhar Rose EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"19990","inspiration":"Givenchy L'Interdit","notes":"Floral Blanca Tuberosa","priceSale":0},{"rank":"71","name":"Qaa'ed EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"21990","inspiration":"Dolce & Gabbana Velvet Desert Oud","notes":"Ámbar Especiada Canela","priceSale":0},{"rank":"72","name":"Al Noble Wajood EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"21990","inspiration":"Kenzo Homme EDP","notes":"Acuática Amaderada Salina","priceSale":0},{"rank":"73","name":"Al Noble Ameer EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"21990","inspiration":"Parfums de Marly Haltane","notes":"Amaderada Especiada Manzana","priceSale":0},{"rank":"74","name":"Ejaazi EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"16990","inspiration":"Office For Men / Fragrance One","notes":"Aromática Cítrica Ambroxan","priceSale":0},{"rank":"75","name":"Ejaazi Intensive Silver EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"16990","inspiration":"Yves Saint Laurent La Nuit de L'Homme","notes":"Aromática Especiada Cardamomo","priceSale":0},{"rank":"76","name":"Craze EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"26990","inspiration":"Parfums de Marly Pegasus","notes":"Ámbar Fougère Almendra","priceSale":0},{"rank":"77","name":"Hunter Intense EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"24990","inspiration":"Dior Sauvage + Invictus","notes":"Cítrica Aromática Fresca","priceSale":0},{"rank":"78","name":"Club de Nuit Iconic EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"36990","inspiration":"Chanel Bleu de Chanel EDP","notes":"Cítrica Amaderada Incienso","priceSale":0},{"rank":"79","name":"Club de Nuit Imperiale EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"36990","inspiration":"Parfums de Marly Delina Exclusif","notes":"Floral Rosa Lichi Vainilla","priceSale":0},{"rank":"80","name":"Club de Nuit Urban Man EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"28990","inspiration":"Creed Aventus + Invictus","notes":"Cítrica Frutal Musgo","priceSale":0},{"rank":"81","name":"Supremacy Silver EDP","brand":"Afnan","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"29990","inspiration":"Creed Aventus","notes":"Amaderada Frutal Ahumada","priceSale":0},{"rank":"82","name":"Supremacy In Heaven EDP","brand":"Afnan","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"29990","inspiration":"Creed Silver Mountain Water","notes":"Cítrica Acuática Té","priceSale":0},{"rank":"83","name":"Supremacy Incense EDP","brand":"Afnan","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"29990","inspiration":"Amouage Interlude Man","notes":"Ámbar Amaderada Incienso","priceSale":0},{"rank":"84","name":"Modest Deux EDP","brand":"Afnan","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"27990","inspiration":"Lancôme La Nuit Trésor","notes":"Gourmand Frutal Cacao","priceSale":0},{"rank":"85","name":"Historic Doria EDP","brand":"Afnan","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"31990","inspiration":"Tom Ford Tubéreuse Nue","notes":"Floral Blanca Tuberosa","priceSale":0},{"rank":"86","name":"Amber Oud Ruby Edition EDP","brand":"Al Haramain","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"52990","inspiration":"Maison Francis Kurkdjian Baccarat Rouge 540 Extrait","notes":"Ámbar Especiada Almendra","priceSale":0},{"rank":"87","name":"Amber Oud White Edition EDP","brand":"Al Haramain","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"49990","inspiration":"Chanel Coco Mademoiselle Intense","notes":"Floral Cítrica Pachulí","priceSale":0},{"rank":"88","name":"L'Aventure Knight EDP","brand":"Al Haramain","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"32990","inspiration":"Creed Green Irish Tweed","notes":"Aromática Verde Violeta","priceSale":0},{"rank":"89","name":"L'Aventure Blanche EDP","brand":"Al Haramain","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"32990","inspiration":"Creed Silver Mountain Water","notes":"Floral Frutal Cítrica","priceSale":0},{"rank":"90","name":"Shaghaf Oud EDP","brand":"Swiss Arabian","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"32990","inspiration":"Lancôme Oud Bouquet","notes":"Ámbar Rosa Oud Vainilla","priceSale":0},{"rank":"91","name":"Shaghaf Oud Ahmar EDP","brand":"Swiss Arabian","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"34990","inspiration":"Xerjoff Erba Pura / Kirke","notes":"Frutal Dulce Ámbar","priceSale":0},{"rank":"92","name":"Shaghaf Oud Tonka EDP","brand":"Swiss Arabian","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"34990","inspiration":"BDK Parfums Velvet Tonka","notes":"Ámbar Gourmand Almendra","priceSale":0},{"rank":"93","name":"Shaghaf Oud Azraq EDP","brand":"Swiss Arabian","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"34990","inspiration":"Honey Oud Floris / Miel Oud","notes":"Ámbar Amaderada Miel","priceSale":0},{"rank":"94","name":"Hawas for Her EDP","brand":"Rasasi","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"34990","inspiration":"Paco Rabanne Olympéa","notes":"Floral Frutal Gourmand","priceSale":0},{"rank":"95","name":"Hawas Tropical EDP","brand":"Rasasi","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"37990","inspiration":"Creed Virgin Island Water","notes":"Frutal Coco Acuática","priceSale":0},{"rank":"96","name":"Hawas Elixir EDP","brand":"Rasasi","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"39990","inspiration":"Dior Sauvage Elixir + Invictus Victory","notes":"Ámbar Especiada Densa","priceSale":0},{"rank":"97","name":"Fire Your Desire Emir EDP","brand":"Paris Corner","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"27990","inspiration":"Kilian Angels' Share","notes":"Ámbar Especiada Canela","priceSale":0},{"rank":"98","name":"Rifaaqat EDP","brand":"Paris Corner","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"29990","inspiration":"Yves Saint Laurent Babycat","notes":"Ámbar Vainilla Gamuza","priceSale":0},{"rank":"99","name":"Taskeen EDP","brand":"Paris Corner","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"26990","inspiration":"Tom Ford Peach / Frutal","notes":"Frutal Melocotón Jazmín","priceSale":0},{"rank":"100","name":"Taskeen Marina EDP","brand":"Paris Corner","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"26990","inspiration":"Louis Vuitton Pacific Chill","notes":"Cítrica Acuática Frutal","priceSale":0},{"rank":"101","name":"Khamrah Dukhan EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"26990","inspiration":"Kilian Angels' Share (Versión Ahumada)","notes":"Ámbar Especiada Incienso","priceSale":0},{"rank":"102","name":"Asad Bourbon EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"25990","inspiration":"Dior Sauvage Elixir (Nota Bourbon Vainilla)","notes":"Ámbar Especiada Licorada","priceSale":0},{"rank":"103","name":"Asad Elixir EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"26990","inspiration":"Dior Sauvage Elixir Concentrado","notes":"Ámbar Especiada Densa","priceSale":0},{"rank":"104","name":"Yara Elixir EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"25990","inspiration":"Yara Concentrado Frutal Vainilla","notes":"Gourmand Floral Frutal","priceSale":0},{"rank":"105","name":"Eclaire Banoffi EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"28990","inspiration":"Gourmand Plátano Caramelo","notes":"Gourmand Dulce Plátano","priceSale":0},{"rank":"106","name":"Eclaire Pistache EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"28990","inspiration":"Kayali Yum Pistachio Gelato 33","notes":"Gourmand Pistacho Crema","priceSale":0},{"rank":"107","name":"Opulent Dubai EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"22990","inspiration":"Amouage Guidance Style","notes":"Ámbar Floral Madera","priceSale":0},{"rank":"108","name":"Love In Paris EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"25990","inspiration":"Parfums de Marly Delina Style","notes":"Floral Rosa Frutal","priceSale":0},{"rank":"109","name":"Fire On Ice EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"26990","inspiration":"Kilian Ice Bang / Menta Fresca","notes":"Cítrica Aromática Especiada","priceSale":0},{"rank":"110","name":"London City of Contrast","brand":"Lattafa (Pride)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"28990","inspiration":"Memo African Leather Style","notes":"Cuero Especiado Cardamomo","priceSale":0},{"rank":"111","name":"New York City of Dreams","brand":"Lattafa (Pride)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"28990","inspiration":"Bond No 9 Lafayette Street Style","notes":"Ámbar Frutal Vainilla","priceSale":0},{"rank":"112","name":"Hayaatim EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"17990","inspiration":"Paco Rabanne Invictus Style","notes":"Acuática Amaderada Frutal","priceSale":0},{"rank":"113","name":"Maahir Silver EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"24990","inspiration":"More Than Words Xerjoff Style","notes":"Ámbar Oriental Oud","priceSale":0},{"rank":"114","name":"Badee Al Oud Amethyst","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"25990","inspiration":"Initio Atomic Rose","notes":"Ámbar Floral Rosa Pimienta","priceSale":0},{"rank":"115","name":"Confidential Private Gold","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"19990","inspiration":"Tiziana Terenzi Kirke","notes":"Frutal Durazno Maracuyá","priceSale":0},{"rank":"116","name":"Velvet Rose EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"19990","inspiration":"Armani Privé Rose d'Arabie","notes":"Ámbar Floral Rosa Oud","priceSale":0},{"rank":"117","name":"Ajwad EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"21990","inspiration":"Mancera Roses Vanille","notes":"Floral Frutal Vainilla","priceSale":0},{"rank":"118","name":"Ajwad Pink to Pink EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"22990","inspiration":"Montale Roses Musk Style","notes":"Floral Frutal Rosa Guayaba","priceSale":0},{"rank":"119","name":"Ana Abiyedh EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"16990","inspiration":"Xerjoff Erba Pura","notes":"Frutal Almizclada Ámbar","priceSale":0},{"rank":"120","name":"Ana Abiyedh Rouge EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"16990","inspiration":"Baccarat Rouge 540 MFK","notes":"Ámbar Especiada Azafrán","priceSale":0},{"rank":"121","name":"Ana Abiyedh Leather EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"16990","inspiration":"Memo Irish Leather","notes":"Cuero Verde Enebro","priceSale":0},{"rank":"122","name":"Oud Mood EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"18990","inspiration":"Lancôme Oud Bouquet Style","notes":"Ámbar Amaderada Ámbar Resina","priceSale":0},{"rank":"123","name":"Oud Mood Reminiscence EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"18990","inspiration":"Oud Amaderado Especiado","notes":"Amaderada Oud Frambuesa","priceSale":0},{"rank":"124","name":"Sheikh Al Shuyukh Final Edition","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"17990","inspiration":"Yves Saint Laurent Y EDP","notes":"Aromática Fougère Manzana","priceSale":0},{"rank":"125","name":"Raghba EDP","brand":"Lattafa","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"17990","inspiration":"Bouquet Ideale Xerjoff / Vainilla Oud","notes":"Ámbar Vainilla Incensada","priceSale":0},{"rank":"126","name":"Club de Nuit Urban Elixir Limited","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"45990","inspiration":"Dior Sauvage EDP (Extracto)","notes":"Cítrica Especiada Densa","priceSale":0},{"rank":"127","name":"Club de Nuit Private Key To My Love","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"49990","inspiration":"Erba Pura Xerjoff Lux Edition","notes":"Frutal Dulce Ámbar","priceSale":0},{"rank":"128","name":"Club de Nuit Private Key To My Life","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"49990","inspiration":"Parfums de Marly Delina Lux","notes":"Floral Rosa Lichi","priceSale":0},{"rank":"129","name":"Club de Nuit Private Key To My Success","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"49990","inspiration":"Creed Aventus Absolu Style","notes":"Cítrica Amaderada Especiada","priceSale":0},{"rank":"130","name":"Club de Nuit Niche Oud EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"32990","inspiration":"Amber Oud Oriental","notes":"Ámbar Amaderada Oud","priceSale":0},{"rank":"131","name":"Odyssey Homme EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"25990","inspiration":"Tom Ford Noir Extreme","notes":"Ámbar Vainilla Iris","priceSale":0},{"rank":"132","name":"Odyssey Mega EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"26990","inspiration":"Yves Saint Laurent Y EDP","notes":"Aromática Cítrica Manzana","priceSale":0},{"rank":"133","name":"Odyssey White EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"25990","inspiration":"Armani Code EDP","notes":"Ámbar Especiada Habatonka","priceSale":0},{"rank":"134","name":"Odyssey Aqua EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"26990","inspiration":"Invictus Platinum Paco Rabanne","notes":"Acuática Verde Menta","priceSale":0},{"rank":"135","name":"Tag Him EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"22990","inspiration":"Bleu de Chanel EDT","notes":"Cítrica Amaderada Jengibre","priceSale":0},{"rank":"136","name":"Tag Uomo Rosso EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"27990","inspiration":"Invictus Victory Elixir Paco Rabanne","notes":"Ámbar Especiada Vainilla","priceSale":0},{"rank":"137","name":"Tres Nuit EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"24990","inspiration":"Creed Green Irish Tweed","notes":"Aromática Fougère Violeta","priceSale":0},{"rank":"138","name":"Tres Nuit Lyric EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"24990","inspiration":"Acqua Di Giò Profondo","notes":"Acuática Cítrica Romero","priceSale":0},{"rank":"139","name":"Ventana Pour Homme EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"23990","inspiration":"Dior Sauvage EDT","notes":"Cítrica Especiada Lavanda","priceSale":0},{"rank":"140","name":"Derby Blanche EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"21990","inspiration":"Creed Silver Mountain Water","notes":"Cítrica Acuática Té Verde","priceSale":0},{"rank":"141","name":"Supremacy Pink EDP","brand":"Afnan","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"28990","inspiration":"Chanel Chance Eau Tendre","notes":"Floral Frutal Rosa","priceSale":0},{"rank":"142","name":"Supremacy Purple EDP","brand":"Afnan","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"28990","inspiration":"Xerjoff Erba Pura","notes":"Frutal Ámbar Vainilla","priceSale":0},{"rank":"143","name":"Modest Une EDP","brand":"Afnan","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"27990","inspiration":"Dior Sauvage EDT","notes":"Cítrica Especiada Ambroxan","priceSale":0},{"rank":"144","name":"Zimaya Sharaf Blend EDP","brand":"Afnan (Zimaya)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"24990","inspiration":"Kilian Angels' Share","notes":"Ámbar Gourmand Canela","priceSale":0},{"rank":"145","name":"Zimaya Fatima EDP","brand":"Afnan (Zimaya)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"24990","inspiration":"Parfums de Marly Delina","notes":"Floral Rosa Lichi","priceSale":0},{"rank":"146","name":"Zimaya Royal Sapphire","brand":"Afnan (Zimaya)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"24990","inspiration":"Baccarat Rouge 540 MFK","notes":"Ámbar Especiada Azafrán","priceSale":0},{"rank":"147","name":"Zimaya Amber Is Great","brand":"Afnan (Zimaya)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"24990","inspiration":"Erba Pura Xerjoff","notes":"Frutal Ámbar Vainilla","priceSale":0},{"rank":"148","name":"Zimaya Rabab Gem EDP","brand":"Afnan (Zimaya)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"24990","inspiration":"Xerjoff Accento","notes":"Chipre Frutal Piña Lirio","priceSale":0},{"rank":"149","name":"Zimaya Icon EDP","brand":"Afnan (Zimaya)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"24990","inspiration":"Dunhill Icon Style","notes":"Cítrica Amaderada Neroli","priceSale":0},{"rank":"150","name":"Historic Olmeda EDP","brand":"Afnan","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"31990","inspiration":"Bleu de Chanel Parfum","notes":"Cítrica Amaderada Especiada","priceSale":0},{"rank":"151","name":"Amber Oud Black Edition EDP","brand":"Al Haramain","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"49990","inspiration":"Tom Ford Noir de Noir","notes":"Ámbar Amaderada Rosa Oud","priceSale":0},{"rank":"152","name":"Amber Oud Rouge Edition EDP","brand":"Al Haramain","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"52990","inspiration":"Baccarat Rouge 540 EDP","notes":"Ámbar Especiada Azafrán","priceSale":0},{"rank":"153","name":"Amber Oud Emerald Edition EDP","brand":"Al Haramain","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"49990","inspiration":"Elysium Roja Dove Style","notes":"Cítrica Amaderada Menta","priceSale":0},{"rank":"154","name":"L'Aventure Iris EDP","brand":"Al Haramain","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"32990","inspiration":"Dior Joy / Floral Iris","notes":"Floral Polvosa Iris","priceSale":0},{"rank":"155","name":"L'Aventure Rose EDP","brand":"Al Haramain","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"32990","inspiration":"Roses Vanille Mancera","notes":"Floral Frutal Rosa Vainilla","priceSale":0},{"rank":"156","name":"Junoon Velvet EDP","brand":"Al Haramain","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"39990","inspiration":"Tom Ford Tobacco Vanille","notes":"Ámbar Especiada Tabaco","priceSale":0},{"rank":"157","name":"Junoon Rose EDP","brand":"Al Haramain","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"39990","inspiration":"Xerjoff Dama Bianca","notes":"Floral Frutal Vainilla Kumquat","priceSale":0},{"rank":"158","name":"Amber Oud Carbon Edition EDP","brand":"Al Haramain","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"49990","inspiration":"Creed Green Irish Tweed","notes":"Aromática Verde Violeta","priceSale":0},{"rank":"159","name":"Barakkat Rouge 540 EDP","brand":"Fragrance World","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"19990","inspiration":"Baccarat Rouge 540 MFK","notes":"Ámbar Especiada Azafrán","priceSale":0},{"rank":"160","name":"Barakkat Gentle Gold EDP","brand":"Fragrance World","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"19990","inspiration":"Gentle Fluidity Gold MFK","notes":"Ámbar Vainilla Enebro","priceSale":0},{"rank":"161","name":"Barakkat Satin Oud EDP","brand":"Fragrance World","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"19990","inspiration":"Oud Satin Mood MFK","notes":"Ámbar Floral Rosa Oud","priceSale":0},{"rank":"162","name":"Suit EDP","brand":"Fragrance World","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"21990","inspiration":"YSL Tuxedo","notes":"Ámbar Pachulí Nuez Moscada","priceSale":0},{"rank":"163","name":"Apex EDP","brand":"Fragrance World","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"21990","inspiration":"Roja Parfums Apex","notes":"Chipre Cítrico Cuero","priceSale":0},{"rank":"164","name":"Imperium EDP","brand":"Fragrance World","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"21990","inspiration":"Roja Parfums Elysium","notes":"Cítrica Aromática Pomelo","priceSale":0},{"rank":"165","name":"Poseidon EDP","brand":"Fragrance World","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"19990","inspiration":"Creed Aventus","notes":"Frutal Amaderada Piña","priceSale":0},{"rank":"166","name":"Posh Alpha EDP","brand":"Fragrance World","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"21990","inspiration":"Paco Rabanne Phantom","notes":"Aromática Lavanda Limón","priceSale":0},{"rank":"167","name":"Cocktail Intense EDP","brand":"Fragrance World","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"19990","inspiration":"Kilian Angels' Share","notes":"Ámbar Especiada Canela","priceSale":0},{"rank":"168","name":"Sublime EDP","brand":"Fragrance World","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"21990","inspiration":"Eden Juicy Kayali","notes":"Frutal Manzana Grosella","priceSale":0},{"rank":"169","name":"Banger EDP","brand":"Fragrance World","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"21990","inspiration":"Mancera Cedrat Boise","notes":"Cítrica Frutal Cuero","priceSale":0},{"rank":"170","name":"Renascence EDP","brand":"Fragrance World","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"24990","inspiration":"Amouage Renaissance","notes":"Cítrica Menta Floral","priceSale":0},{"rank":"171","name":"Amberley Pur Oud EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"22990","inspiration":"Guerlain Les Absolus d'Orient Oud","notes":"Ámbar Amaderada Oud Cuero","priceSale":0},{"rank":"172","name":"Sceptre Malachite EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"24990","inspiration":"Bvlgari Kobraa","notes":"Oriental Especiada Incienso","priceSale":0},{"rank":"173","name":"Sceptre Bronzite EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"24990","inspiration":"Bvlgari Tygar","notes":"Cítrica Pomelo Ámbar","priceSale":0},{"rank":"174","name":"Sceptre Oceana EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"24990","inspiration":"Bvlgari Megamare Style","notes":"Acuática Marina Salina","priceSale":0},{"rank":"175","name":"Reyna EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"21990","inspiration":"Parfums de Marly Oriana","notes":"Floral Frutal Malvavisco","priceSale":0},{"rank":"176","name":"Delilah EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"21990","inspiration":"Parfums de Marly Delina","notes":"Floral Rosa Lichi Ruibarbo","priceSale":0},{"rank":"177","name":"Infini Rose EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"22990","inspiration":"Initio Atomic Rose","notes":"Ámbar Floral Rosa Pimienta","priceSale":0},{"rank":"178","name":"Infini Oud EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"22990","inspiration":"Initio Oud for Greatness","notes":"Amaderada Especiada Azafrán","priceSale":0},{"rank":"179","name":"Infini Elixir EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"22990","inspiration":"Mancera Red Tobacco Style","notes":"Ámbar Especiada Canela Tabaco","priceSale":0},{"rank":"180","name":"Toscano Leather EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"21990","inspiration":"Tom Ford Tuscan Leather","notes":"Cuero Frambuesa Azafrán","priceSale":0},{"rank":"181","name":"Tabac EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"21990","inspiration":"Dior Tobacolor","notes":"Ámbar Tabaco Miel Plum","priceSale":0},{"rank":"182","name":"Victorioso EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"19990","inspiration":"Paco Rabanne Invictus","notes":"Acuática Amaderada Laurel","priceSale":0},{"rank":"183","name":"Victorioso Legend EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"19990","inspiration":"Invictus Legend Paco Rabanne","notes":"Acuática Salina Ámbar","priceSale":0},{"rank":"184","name":"Victorioso Victory EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"19990","inspiration":"Invictus Victory Paco Rabanne","notes":"Ámbar Especiada Vainilla","priceSale":0},{"rank":"185","name":"Nouveau Noir EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"22990","inspiration":"Louis Vuitton Nouveau Monde","notes":"Ámbar Amaderada Cacao Oud","priceSale":0},{"rank":"186","name":"L'Intrude EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"19990","inspiration":"Givenchy L'Interdit","notes":"Floral Blanca Tuberosa","priceSale":0},{"rank":"187","name":"Opulent Rouge EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"19990","inspiration":"Armani Privé Rouge Malachite","notes":"Floral Tuberosa Ámbar","priceSale":0},{"rank":"188","name":"Monocline 01 EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"18990","inspiration":"Escentric Molecules Molecule 01","notes":"Amaderada Iso E Super","priceSale":0},{"rank":"189","name":"Monocline 02 EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"18990","inspiration":"Escentric Molecules Molecule 02","notes":"Ámbar Ambroxan Limpio","priceSale":0},{"rank":"190","name":"Kobra For Him EDP","brand":"Rasasi","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"32990","inspiration":"Louis Vuitton Imagination","notes":"Cítrica Té Té Negro Menta","priceSale":0},{"rank":"191","name":"Hawas Malibu EDP","brand":"Rasasi","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"37990","inspiration":"Jean Paul Gaultier Le Beau Le Parfum","notes":"Frutal Acuática Coco","priceSale":0},{"rank":"192","name":"Tasmeem EDP","brand":"Rasasi","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"24990","inspiration":"Aroma Oriental Cardamomo Vainilla","notes":"Ámbar Especiada Cardamomo","priceSale":0},{"rank":"193","name":"Daarej Pour Homme EDP","brand":"Rasasi","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"23990","inspiration":"Valentino V pour Homme","notes":"Ámbar Especiada Comino Vainilla","priceSale":0},{"rank":"194","name":"Fattan Pour Homme EDP","brand":"Rasasi","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"22990","inspiration":"Terre d'Hermès","notes":"Amaderada Cítrica Vetiver","priceSale":0},{"rank":"195","name":"Al Wisam Day EDP","brand":"Rasasi","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"29990","inspiration":"Creed Silver Mountain Water","notes":"Oriental Fougère Té Rosa","priceSale":0},{"rank":"196","name":"Ego Stratus EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"24990","inspiration":"YSL Y Eau Fraiche","notes":"Cítrica Fresca Menta","priceSale":0},{"rank":"197","name":"Ego Tigre EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"24990","inspiration":"Kenzo Homme EDP","notes":"Acuática Amaderada Marina","priceSale":0},{"rank":"198","name":"Odyssey Tyrant EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"26990","inspiration":"Jean Paul Gaultier Le Male Elixir","notes":"Ámbar Miel Lavanda Vainilla","priceSale":0},{"rank":"199","name":"Odyssey Limoni EDP","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"26990","inspiration":"Dolce & Gabbana Light Blue Forever","notes":"Cítrica Pomelo Limón","priceSale":0},{"rank":"200","name":"Club de Nuit Blue Iconic","brand":"Armaf","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"36990","inspiration":"Bleu de Chanel Parfum","notes":"Amaderada Cítrica Incienso","priceSale":0},{"rank":"201","name":"King EDP","brand":"Bharara","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"49990","inspiration":"Xerjoff Erba Pura","notes":"Frutal Dulce Cítrica Ámbar","priceSale":0},{"rank":"202","name":"Viking EDP","brand":"Bharara","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"49990","inspiration":"Creed Viking","notes":"Amaderada Especiada Pimienta","priceSale":0},{"rank":"203","name":"Onyx EDP","brand":"Bharara","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"52990","inspiration":"Baccarat Rouge 540 Extrait","notes":"Ámbar Especiada Almendra","priceSale":0},{"rank":"204","name":"Double Black EDP","brand":"Bharara","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"49990","inspiration":"Dior Sauvage Elixir","notes":"Ámbar Especiada Densa","priceSale":0},{"rank":"205","name":"Beauty EDP","brand":"Bharara","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"49990","inspiration":"Parfums de Marly Delina Exclusif","notes":"Floral Rosa Lichi Vainilla","priceSale":0},{"rank":"206","name":"Shaghaf Individual EDP","brand":"Swiss Arabian","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"34990","inspiration":"Creed Aventus Absolu","notes":"Frutal Amaderada Pimienta","priceSale":0},{"rank":"207","name":"Imperial Arabia EDP","brand":"Swiss Arabian","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"32990","inspiration":"Tom Ford Tuscan Leather","notes":"Cuero Incensado Azafrán","priceSale":0},{"rank":"208","name":"Casablanca EDP","brand":"Swiss Arabian","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"32990","inspiration":"La Danza delle Libellule Nobile 1942","notes":"Gourmand Manzana Caramelo","priceSale":0},{"rank":"209","name":"Florence EDP","brand":"Swiss Arabian","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"32990","inspiration":"Prada Paradoxe","notes":"Floral Frutal Ámbar","priceSale":0},{"rank":"210","name":"Rose 01 EDP","brand":"Swiss Arabian","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"36990","inspiration":"Parfums de Marly Delina","notes":"Floral Rosa Lichi Peonía","priceSale":0},{"rank":"211","name":"Oud 07 EDP","brand":"Swiss Arabian","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"39990","inspiration":"Oud Ispahan Dior Style","notes":"Ámbar Amaderada Oud Rosa","priceSale":0},{"rank":"212","name":"Amber 07 EDP","brand":"Swiss Arabian","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"39990","inspiration":"Ambre Narguile Hermès","notes":"Ámbar Especiada Canela Miel","priceSale":0},{"rank":"213","name":"Musk 07 EDP","brand":"Swiss Arabian","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"39990","inspiration":"Musc Ravageur Frederic Malle","notes":"Ámbar Almizclada Vainilla","priceSale":0},{"rank":"214","name":"Valiant EDP","brand":"Paris Corner (Pendora)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"22990","inspiration":"Parfums de Marly Kalan","notes":"Especiada Naranja Sanguina","priceSale":0},{"rank":"215","name":"Charger EDP","brand":"Paris Corner (Pendora)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"22990","inspiration":"Parfums de Marly Pegasus","notes":"Ámbar Almendra Fougère","priceSale":0},{"rank":"216","name":"Cigar Rum EDP","brand":"Paris Corner (Emir)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"27990","inspiration":"Maison Margiela Jazz Club","notes":"Ámbar Tabaco Ron Vainilla","priceSale":0},{"rank":"217","name":"When The Rain Stops EDP","brand":"Paris Corner (Emir)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"27990","inspiration":"Replica When The Rain Stops","notes":"Acuática Verde Petricor","priceSale":0},{"rank":"218","name":"Super Crush EDP","brand":"Paris Corner (Emir)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"27990","inspiration":"Mancera Instant Crush","notes":"Ámbar Especiada Azafrán Vainilla","priceSale":0},{"rank":"219","name":"You're Drugged EDP","brand":"Paris Corner (Emir)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"27990","inspiration":"Kilian Intoxicated","notes":"Aromática Café Cardamomo","priceSale":0},{"rank":"220","name":"Camp Fire EDP","brand":"Paris Corner (Emir)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"27990","inspiration":"Replica By the Fireplace","notes":"Ámbar Amaderada Azúcar Castaña","priceSale":0},{"rank":"221","name":"Bake EDP","brand":"Paris Corner (Emir)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"27990","inspiration":"Akro Bake","notes":"Gourmand Limón Bizcocho Vainilla","priceSale":0},{"rank":"222","name":"Cherry Cola EDP","brand":"Paris Corner (Emir)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"27990","inspiration":"Mancera Tonka Cola","notes":"Gourmand Bebida Cola Cereza Canela","priceSale":0},{"rank":"223","name":"Pear Potion EDP","brand":"Paris Corner (Emir)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"27990","inspiration":"Jean Paul Gaultier La Belle","notes":"Frutal Pera Vainilla","priceSale":0},{"rank":"224","name":"Mango Potion EDP","brand":"Paris Corner (Emir)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"27990","inspiration":"Stephane Humbert Lucas God of Fire","notes":"Frutal Mango Exótico","priceSale":0},{"rank":"225","name":"Voux Spices EDP","brand":"Paris Corner (Emir)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"28990","inspiration":"Xerjoff Bouquet Ideale","notes":"Ámbar Especiada Canela Papiro","priceSale":0},{"rank":"226","name":"Kingdom EDP","brand":"Lattafa (Pride)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"28990","inspiration":"Kilian Straight to Heaven","notes":"Amaderada Ron Pachulí","priceSale":0},{"rank":"227","name":"Hala EDP","brand":"Lattafa (Pride)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"28990","inspiration":"Oud Wood Tom Ford Style","notes":"Amaderada Especiada Nuez Moscada","priceSale":0},{"rank":"228","name":"Art of Arabia I EDP","brand":"Lattafa (Pride)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"31990","inspiration":"Louis Vuitton L'Immensité Style","notes":"Cítrica Especiada Jengibre","priceSale":0},{"rank":"229","name":"Art of Arabia II EDP","brand":"Lattafa (Pride)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"31990","inspiration":"Kilian Angels' Share / Cardamomo","notes":"Ámbar Especiada Cardamomo","priceSale":0},{"rank":"230","name":"Art of Arabia III EDP","brand":"Lattafa (Pride)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"31990","inspiration":"Amouage Interlude Black Iris","notes":"Ámbar Amaderada Iris Incienso","priceSale":0},{"rank":"231","name":"Shaheen Silver EDP","brand":"Lattafa (Pride)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"28990","inspiration":"Creed Aventus / Nishane Hacivat","notes":"Chipre Frutal Cassis Musgo","priceSale":0},{"rank":"232","name":"Shaheen Gold EDP","brand":"Lattafa (Pride)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"28990","inspiration":"Erba Pura Xerjoff","notes":"Frutal Ámbar Piña Higo","priceSale":0},{"rank":"233","name":"Afaq EDP","brand":"Lattafa (Pride)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"32990","inspiration":"Flor de Pera y Tuberosa Niche","notes":"Floral Frutal Pera Tuberosa","priceSale":0},{"rank":"234","name":"Thouq EDP","brand":"Lattafa (Pride)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"28990","inspiration":"Parfums de Marly Delina Exclusif","notes":"Floral Rosa Bergamota Lichi","priceSale":0},{"rank":"235","name":"Al Qiam Silver EDP","brand":"Lattafa (Pride)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"27990","inspiration":"Bvlgari Tygar","notes":"Cítrica Pomelo Jengibre","priceSale":0},{"rank":"236","name":"Ishq Al Shuyukh Gold","brand":"Lattafa (Pride)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"29990","inspiration":"Rosendo Mateu No. 5","notes":"Ámbar Cuero Caramelo Vainilla","priceSale":0},{"rank":"237","name":"Ishq Al Shuyukh Silver","brand":"Lattafa (Pride)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"29990","inspiration":"1 Million Lucky Paco Rabanne","notes":"Amaderada Nutty Avellana Miel","priceSale":0},{"rank":"238","name":"Eternal Oud EDP","brand":"Lattafa (Pride)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"32990","inspiration":"Grand Soir Maison Francis Kurkdjian","notes":"Ámbar Resinosa Ciruela Vainilla","priceSale":0},{"rank":"239","name":"Affection EDP","brand":"Lattafa (Pride)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"28990","inspiration":"Yum Pistachio Gelato Kayali","notes":"Gourmand Pistacho Avellana","priceSale":0},{"rank":"240","name":"Pisa EDP","brand":"Lattafa (Pride)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"28990","inspiration":"Acqua Di Parma Fico di Amalfi","notes":"Cítrica Frutal Higo Menta","priceSale":0},{"rank":"241","name":"Kharma EDP","brand":"Lattafa (Pride)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"29990","inspiration":"Kilian Angels' Share Style","notes":"Ámbar Gourmand Praliné Canela","priceSale":0},{"rank":"242","name":"Royal Blend EDP","brand":"French Avenue (Fragrance World)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"28990","inspiration":"Kilian Angels' Share","notes":"Ámbar Gourmand Licor Manzana","priceSale":0},{"rank":"243","name":"Royal Blend Nero EDP","brand":"French Avenue (Fragrance World)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"29990","inspiration":"Kilian Angels' Share (Notas de Café)","notes":"Gourmand Café Canela","priceSale":0},{"rank":"244","name":"After Effect EDP","brand":"French Avenue (Fragrance World)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"28990","inspiration":"Initio Side Effect","notes":"Ámbar Especiada Ron Tabaco Vainilla","priceSale":0},{"rank":"245","name":"Enigma Une EDP","brand":"French Avenue (Fragrance World)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"27990","inspiration":"Dior Sauvage Elixir","notes":"Ámbar Especiada Lavanda Canela","priceSale":0},{"rank":"246","name":"Venom Incarnat EDP","brand":"French Avenue (Fragrance World)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Mujer","price":"29990","inspiration":"Stephane Humbert Lucas Venom Incarnat","notes":"Frutal Fresa Fresa Salvaje Cuero","priceSale":0},{"rank":"247","name":"Symphony EDP","brand":"French Avenue (Fragrance World)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"31990","inspiration":"Louis Vuitton Symphony","notes":"Cítrica Jengibre Pomelo","priceSale":0},{"rank":"248","name":"L'Ombre EDP","brand":"French Avenue (Fragrance World)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Hombre","price":"29990","inspiration":"Louis Vuitton Ombre Nomade","notes":"Ámbar Amaderada Oud Incienso Rosa","priceSale":0},{"rank":"249","name":"Diwani Cairo EDP","brand":"French Avenue (Fragrance World)","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"32990","inspiration":"Penhaligon's Cairo Style","notes":"Ámbar Especiada Rosa Azafrán","priceSale":0},{"rank":"250","name":"Amberley Amber Grace EDP","brand":"Maison Alhambra","origin":"Emiratos Árabes Unidos (EAU)","gender":"Unisex","price":"22990","inspiration":"Guerlain Ambre Eternel","notes":"Ámbar Oriental Ámbar Cuero Florals","priceSale":0}];
+    const savedPhotos = {"1":"https://http2.mlstatic.com/D_NQ_NP_2X_834470-MLC120320584937_102026-F-armaf-club-de-nuit-intense-parfum-150ml-hombre.webp","2":"https://productosdelujo.cl/cdn/shop/files/asasd_cyber2.webp?v=1791046557&width=1500","3":"https://media.falabella.com/falabellaCL/124370214_01/w=1200,h=1200,fit=pad","4":"https://http2.mlstatic.com/D_NQ_NP_2X_820116-MLC111121713607_052026-F-perfume-khamrah-lattafa-eau-de-parfum-original-unisex-100ml.webp","5":"https://www.eliteperfumes.cl/cdn/shop/files/afnan-afnan-9-pm-hombre-edp-100-ml-h-31769313902628.jpg?v=1724191653&width=1000","6":"https://http2.mlstatic.com/D_NQ_NP_2X_793469-MLA92414242426_092025-F.webp","7":"https://http2.mlstatic.com/D_NQ_NP_2X_854522-MLU76885472895_062024-F.webp","8":"https://http2.mlstatic.com/D_NQ_NP_2X_939567-MLA102457967438_122025-F.webp","9":"https://http2.mlstatic.com/D_NQ_NP_2X_897800-MLA54976209914_042023-F.webp","10":"https://http2.mlstatic.com/D_NQ_NP_2X_846717-MLA82707239251_022025-F.webp","11":"https://multimarcasperfumes.cl/cdn/shop/files/Amber_Oud_Gold_Edition_EDP_60_ML_Unisex_Al_Haramain_Inspirado_en_Erba_Pura.webp?v=1792098046&width=2048","12":"https://http2.mlstatic.com/D_NQ_NP_2X_984211-MLA83996202337_042025-F.webp","13":"https://http2.mlstatic.com/D_NQ_NP_2X_670261-MLA83647072147_042025-F.webp","14":"https://http2.mlstatic.com/D_NQ_NP_2X_965652-MLA101922957550_122025-F.webp","15":"https://i5.walmartimages.cl/asr/c5f0dd2a-b99e-4d4c-b8f9-b06881314a9e.925fbbbb5d4c1a33265438d5f0655c64.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF","16":"https://http2.mlstatic.com/D_NQ_NP_2X_870842-MLU75576618372_042024-F.webp","17":"https://http2.mlstatic.com/D_NQ_NP_2X_982862-MLU73784211216_012024-F.webp","18":"https://http2.mlstatic.com/D_NQ_NP_2X_697460-MLA98554316109_112025-F.webp","19":"https://http2.mlstatic.com/D_NQ_NP_2X_952147-MLA82824178854_032025-F.webp","20":"https://http2.mlstatic.com/D_NQ_NP_2X_724947-MLU74163301315_012024-F.webp","21":"https://http2.mlstatic.com/D_NQ_NP_2X_864503-MLA100941798998_122025-F.webp","22":"https://http2.mlstatic.com/D_NQ_NP_2X_917334-MLA115264279395_072026-F.webp","23":"https://http2.mlstatic.com/D_NQ_NP_2X_615607-MLA103345029993_012026-F.webp","24":"https://http2.mlstatic.com/D_NQ_NP_2X_607182-MLA84473748741_052025-F.webp","25":"https://http2.mlstatic.com/D_NQ_NP_2X_815895-MLA82647107602_032025-F.webp","26":"https://http2.mlstatic.com/D_NQ_NP_2X_616766-MLA90072972006_082025-F.webp","27":"https://http2.mlstatic.com/D_NQ_NP_2X_721516-MLA109739928459_032026-F.webp","28":"https://http2.mlstatic.com/D_NQ_NP_2X_817924-MLC88012703478_072025-F-lattafa-maahir-legacy-edp-100-ml-arabe-original-unisex.webp","29":"https://http2.mlstatic.com/D_NQ_NP_2X_978011-MLA103429657889_012026-F.webp","30":"https://http2.mlstatic.com/D_NQ_NP_2X_788008-MLC100503136272_122025-F-perfume-club-de-nuit-urban-elixir-105ml-armaf-edp-hombre.webp"};
+    const whatsappNumber = "+56979425864";
+    
+    const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    
+    const photoKey = (p) => 'arabperfume-photo-' + p.rank;
+    const getPhoto = (p) => savedPhotos[p.rank] || localStorage.getItem(photoKey(p)) || '';
+
+    let brandSelect = document.getElementById('brand');
+    let genderSelect = document.getElementById('gender');
+    
+    const brands = [...new Set(products.map(p => p.brand).filter(Boolean))].sort();
+    const genders = [...new Set(products.map(p => p.gender).filter(Boolean))].sort();
+    
+    brands.forEach(x => brandSelect.add(new Option(x, x)));
+    genders.forEach(x => genderSelect.add(new Option(x, x)));
+    
+    function draw() {
+      const q = document.getElementById('q').value.toLowerCase();
+      const b = brandSelect.value;
+      const g = genderSelect.value;
+      const f = document.getElementById('photo').value;
+      
+      const list = products.filter(p => {
+        const matchQ = !q || (p.name + ' ' + p.brand + ' ' + p.inspiration).toLowerCase().includes(q);
+        const matchB = !b || p.brand === b;
+        const matchG = !g || p.gender === g;
+        const matchF = !f || (f === 'yes' ? !!getPhoto(p) : !getPhoto(p));
+        return matchQ && matchB && matchG && matchF;
+      });
+
+      const totalWithPhoto = products.filter(getPhoto).length;
+      document.getElementById('stats').textContent = `${list.length} perfumes mostrados · ${totalWithPhoto} de ${products.length} con fotografía añadida`;
+
+      const grid = document.getElementById('grid');
+      
+      if (list.length === 0) {
+        grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:40px; color:var(--text-muted);">No se encontraron fragancias con esos filtros.</div>`;
+        return;
+      }
+
+      grid.innerHTML = list.map(p => {
+        const img = getPhoto(p);
+        
+        return `
+        <article class="card">
+          <div class="photo ${img ? '' : 'empty'}">
+            ${img 
+              ? `<img loading="lazy" src="${esc(img)}" alt="${esc(p.name)}" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.insertAdjacentHTML('beforeend','<span>Imagen no disponible</span>')">` 
+              : `<div><span class="symbol">◇</span><div style="font-size:12px;">Foto pendiente</div></div>`
+            }
+            ${img ? '<span class="photo-label">FOTO AÑADIDA</span>' : ''}
+          </div>
+          <div class="info">
+            <div class="rank">RANKING #${esc(p.rank)}</div>
+            <div class="name">${esc(p.name)}</div>
+            <div class="brand">${esc(p.brand)} · ${esc(p.gender)}</div>
+            <div class="price">$${esc(p.priceSale)}</div>
+            <div class="notes">${esc(p.notes)}</div>
+            <div class="details">
+              <b>Inspiración:</b> ${esc(p.inspiration || 'No especificada')}<br>
+              <b>Origen:</b> ${esc(p.origin || 'No especificado')}
+            </div>
+            <div class="actions">
+              <button onclick="openWhatsApp('${esc(p.rank)}')" class="btn-wa-card"><i class="fab fa-whatsapp"></i> Consultar por WhatsApp</button>
+            </div>
+          </div>
+        </article>`;
+      }).join('');
+    }
+
+    window.openWhatsApp = function(rank) {
+      const p = products.find(x => x.rank === rank);
+      if (!p) return;
+      
+      const cantidad = prompt(`¿Cuántas unidades de "${p.name}" deseas?`, "1");
+      if (cantidad === null) return;
+      
+      const qty = parseInt(cantidad);
+      if (isNaN(qty) || qty < 1) {
+        alert('Por favor ingresa una cantidad válida (número mayor a 0).');
+        return;
+      }
+      
+      const total = qty * p.priceSale;
+      const mensaje = `Hola, vengo de la página de Velo de Aromas.\n\n` +
+                      `Quiero consultar por el siguiente perfume:\n` +
+                      `- Producto: ${p.name}\n` +
+                      `- Marca: ${p.brand}\n` +
+                      `- Cantidad: ${qty}\n` +
+                      `- Precio Unitario: $${p.priceSale.toLocaleString('es-CL')}\n` +
+                      `- Total: $${total.toLocaleString('es-CL')}\n\n` +
+                      `Quedo atento a la disponibilidad.`;
+      
+      const waUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensaje)}`;
+      window.open(waUrl, '_blank');
+    };
+
+    document.getElementById('q').addEventListener('input', draw);
+    brandSelect.addEventListener('change', draw);
+    genderSelect.addEventListener('change', draw);
+    document.getElementById('photo').addEventListener('change', draw);
+
+    draw();
+  </script>
+</body>
+</html>
